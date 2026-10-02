@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaisaPilot — your money copilot (simulated Alexa+ experience)</title>
+<link rel="stylesheet" href="styles.css">
+<script src="chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo">
+      <div class="ring"><div class="ring-inner"></div></div>
+      <div>
+        <h1>PaisaPilot</h1>
+        <p class="sub">your money copilot &middot; simulated Alexa+ experience</p>
+      </div>
+    </div>
+    <div class="sim-badge">SIMULATION — no Amazon device required</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="chat">🎙️ Talk</button>
+    <button class="tab" data-tab="dash">📊 Dashboard</button>
+    <button class="tab" data-tab="watch">🔔 Price Watch</button>
+  </nav>
+
+  <!-- CHAT / VOICE -->
+  <section id="tab-chat" class="panel active">
+    <div class="wake-hint">Try: <i>"Alexa, I spent 250 on lunch"</i> — then tap the mic or type below.</div>
+    <div id="chat" class="chat"></div>
+    <div class="composer">
+      <button id="mic" class="mic" title="Tap and speak">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>
+      </button>
+      <input id="textin" type="text" placeholder='Say "Spent 250 on lunch" or "Track iPhone 17 below 70000"…' autocomplete="off">
+      <button id="send">➤</button>
+    </div>
+    <div id="mic-status" class="mic-status"></div>
+    <div class="chips">
+      <button class="chip">Spent 250 on lunch</button>
+      <button class="chip">Set budget 5000 for food</button>
+      <button class="chip">Track iPhone 17 below 70000</button>
+      <button class="chip">How much did I spend?</button>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="tab-dash" class="panel">
+    <div class="cards">
+      <div class="card big"><div class="label">Spent this month</div><div id="d-total" class="bignum">₹0</div></div>
+      <div class="card"><div class="label">Top category</div><div id="d-top" class="bignum small">—</div></div>
+    </div>
+    <div class="card"><h3>Spending by category</h3><div class="chart-wrap"><canvas id="ch-cat"></canvas></div></div>
+    <div class="card"><h3>Budgets</h3><div id="d-budgets"><p class="muted">No budgets yet — say "Set budget 5000 for food".</p></div></div>
+    <div class="card"><h3>Recent expenses</h3><div id="d-recent"></div></div>
+  </section>
+
+  <!-- PRICE WATCH -->
+  <section id="tab-watch" class="panel">
+    <div class="card">
+      <h3>➕ Track a price</h3>
+      <div class="form">
+        <input id="w-name" type="text" placeholder="Product name (e.g. iPhone 17)">
+        <input id="w-target" type="number" placeholder="Alert me below ₹…">
+        <input id="w-url" type="url" placeholder="Product page URL (optional)">
+        <button id="w-add">Start watching</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>👀 Watching <button id="w-checkall" class="mini">Check all prices</button></h3>
+      <div id="w-list"><p class="muted">Nothing tracked yet.</p></div>
+    </div>
+  </section>
+
+  <footer>Built for the Amazon Developer Hackathon · Alexa+ simulated track · PaisaPilot v0.1</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
