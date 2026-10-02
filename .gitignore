@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+*.db
+docs/video/audio/
+docs/video/seg*.mp4
+docs/video/list.txt
+docs/video/check*.png
+docs/demo-shots/
