@@ -8,13 +8,15 @@ Priority order:
    offline, so the demo never depends on a key.
 
 Env vars:
-    AWS_REGION        (default: ap-south-1)
+    AWS_REGION        (default: ap-southeast-2 — Sydney; the account's working
+                      region. ap-south-1/us-east-1 need irreversible "advanced
+                      features" activation, so they are not usable here.)
     BEDROCK_MODEL_ID  (default: amazon.nova-micro-v1:0)
 """
 import json
 import os
 
-AWS_REGION = os.environ.get("AWS_REGION", "ap-south-1")
+AWS_REGION = os.environ.get("AWS_REGION", "ap-southeast-2")
 BEDROCK_MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "amazon.nova-micro-v1:0")
 
 
